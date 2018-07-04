@@ -14,7 +14,7 @@
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
 	reup = rebase-update # depot_tools specific
-	git = !exec git
+	delete-merged-branches = "!git branch --merged master | grep -v -e 'master' -e '\\*' | xargs -n 1 git branch -d && git remote prune origin"
 
 [core]
 	excludesfile = ~/.gitignore
@@ -106,3 +106,6 @@
 	showPatch = true
 [log]
 	date = relative
+[user]
+	name = Chris van der Ploeg
+	email = cploeg@synopsys.com
